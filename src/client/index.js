@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import ManageRoutes from '../Route.js';
+import { BrowserRouter } from 'react-router-dom'
+import Routes from '../Routes'
 
 const App = () => {
   return (
     <BrowserRouter>
-      <ManageRoutes />
+      {Routes}
     </BrowserRouter>
   )
 }
-ReactDom.hydrate(<App />, document.getElementById('root'));
+ReactDom.hydrate(<App />, document.getElementById('root'))
