@@ -1,16 +1,22 @@
-// import React from 'react'
-
 import React, { Component } from 'react'
 import Header from '../../compoments/Header';
 import { connect } from 'react-redux';
-
+import { getHomeList } from './store/actionsCreator';
 class Home extends Component {
+  componentDidMount () {
+    this.props.getHomeList();
+  }
   render () {
+    const { name, newList } = this.props.homeReducer;
     return (
       <div>
         <Header />
-        home
-        {this.props.name}
+        {'home ----' + name}
+        {
+          newList.map(item => {
+            return (<div key={item.id}>{item.name}</div>)
+          })
+        }
         <button onClick={() => { alert('1') }}>click</button>
       </div>
     )
@@ -18,9 +24,13 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  name: state.name,
+  homeReducer: state.home,
 })
-
+const mapDispatchToProps = (dispatch) => ({
+  getHomeList () {
+    dispatch(getHomeList())
+  }
+})
 //连接store
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
