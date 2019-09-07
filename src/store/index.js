@@ -1,7 +1,18 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './reducer';
-const getStore = () => {
-  return createStore(reducer, applyMiddleware(thunk));
+export const getStore = () => {
+  return createStore(
+    reducer,
+    applyMiddleware(thunk),
+  );
 }
-export default getStore;
+
+export const getClientStore = () => {
+  const defaultStore = window.context.state;
+  return createStore(
+    reducer,
+    defaultStore,
+    applyMiddleware(thunk),
+  );
+}

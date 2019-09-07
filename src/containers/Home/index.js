@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import Header from '../../compoments/Header';
 import { connect } from 'react-redux';
+import Header from '../../compoments/Header';
 import { getHomeList } from './store/actionsCreator';
+
 class Home extends Component {
   componentDidMount () {
-    this.props.getHomeList();
+    if (!this.props.homeReducer.newList.length) {
+      this.props.getHomeListData();
+    }
   }
   render () {
     const { name, newList } = this.props.homeReducer;
@@ -23,11 +26,15 @@ class Home extends Component {
   }
 }
 
+Home.loadData = (store) => {
+  return store.dispatch(getHomeList())
+}
+
 const mapStateToProps = state => ({
   homeReducer: state.home,
 })
 const mapDispatchToProps = (dispatch) => ({
-  getHomeList () {
+  getHomeListData () {
     dispatch(getHomeList())
   }
 })
