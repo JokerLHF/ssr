@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import Header from '../../compoments/Header';
 import { getHomeList } from './store/actionsCreator';
 
 class Home extends Component {
@@ -13,7 +12,6 @@ class Home extends Component {
     const { name, newList } = this.props.homeReducer;
     return (
       <div>
-        <Header />
         {'home ----' + name}
         {
           newList.map(item => {

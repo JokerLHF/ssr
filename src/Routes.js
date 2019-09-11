@@ -1,29 +1,28 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { renderRoutes } from "react-router-config";
 
 import Home from './containers/Home';
 import Login from './containers/Login'
-
+import App from './App';
 
 export const routes = [
   {
-    path: "/",
-    component: Home,
-    exact: true,
-    loadData: Home.loadData,
-    key: 'home',
-  }, {
-    path: "/login",
-    component: Login,
-    exact: true,
-    key: 'login',
-    // routes: [{
-    //   path: "/login/ttt",
-    //   component: () => { return <div>1</div> },
-    //   exact: true,
-    //   key: 'ttt'
-    // }]
+    path: '/',
+    component: App,
+    route: [
+      {
+        path: "/",
+        component: Home,
+        exact: true,
+        loadData: Home.loadData,
+        key: 'home',
+      }, {
+        path: "/login",
+        component: Login,
+        exact: true,
+        key: 'login',
+      }
+    ]
   }
 ]
 
