@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './reducer';
+import clientAxios from '../client/request';
+import serverAxios from '../server/request';
 export const getStore = () => {
   return createStore(
     reducer,
-    applyMiddleware(thunk),
+    applyMiddleware(thunk.withExtraArgument(serverAxios)),
   );
 }
 
@@ -13,6 +15,6 @@ export const getClientStore = () => {
   return createStore(
     reducer,
     defaultStore,
-    applyMiddleware(thunk),
+    applyMiddleware(thunk.withExtraArgument(clientAxios)),
   );
 }

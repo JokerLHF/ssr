@@ -1,5 +1,6 @@
 import express from 'express';
 import { render } from './utils/utils';
+import proxy from 'express-http-proxy';
 import { getStore } from '../store/index';
 import { matchRoutes } from "react-router-config";
 import { routes } from '../Routes';
@@ -8,7 +9,11 @@ import { routes } from '../Routes';
 const app = express();
 app.use(express.static('public'));
 
-
+app.use('/topview', proxy('https://easy-mock.com/mock/5cb6e6e3270aa324bd519b60', {
+  proxyReqPathResolver: function (req) {
+    return req.url;
+  }
+}));
 app.get('*', function (req, res) {
 
   const store = getStore();  // 把store抽取出来，方便传入
