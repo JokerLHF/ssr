@@ -1,5 +1,5 @@
 import axios from 'axios';
 const instance = axios.create({
-  baseURL: 'https://easy-mock.com/mock/5cb6e6e3270aa324bd519b60',
+  baseURL: 'http://127.0.0.1:5000',
 })
 export default instance;

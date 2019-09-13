@@ -1,4 +1,3 @@
-
 import { HOME_LIST } from './contants';
 const changeList = (list) => ({
   type: HOME_LIST,
@@ -6,9 +5,9 @@ const changeList = (list) => ({
 })
 export const getHomeList = () => {
   return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get('/topview/Carousel')
+    return axiosInstance.get('/api/news')
       .then(res => {
-        dispatch(changeList(res.data.data.records));
+        dispatch(changeList(res.data));
       })
       .catch(e => console.log(e));
   }

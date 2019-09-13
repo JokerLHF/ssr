@@ -3,8 +3,7 @@ import { renderToString, } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from "react-router-config";
 import { Provider } from 'react-redux';
-import { routes } from '../../Routes';
-export const render = (store, req) => {
+export const render = (store, req, routes) => {
 
   const content = renderToString((
     <Provider store={store}>

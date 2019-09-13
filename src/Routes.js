@@ -5,11 +5,11 @@ import Home from './containers/Home';
 import Login from './containers/Login'
 import App from './App';
 
-export const routes = [
+export default [
   {
     path: '/',
     component: App,
-    route: [
+    routes: [
       {
         path: "/",
         component: Home,
@@ -28,15 +28,15 @@ export const routes = [
 
 
 
-const mapRoute = () => {
-  return (
-    <Switch>
-      {
-        routes.map(route => (
-          <Route {...route} />
-        ))
-      }
-    </Switch>
-  )
-}
-export default mapRoute;
+// const mapRoute = () => {
+//   return (
+//     <Switch>
+//       {
+//         routes.map(route => (
+//           <Route {...route} />
+//         ))
+//       }
+//     </Switch>
+//   )
+// }
+// export default mapRoute;

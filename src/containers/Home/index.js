@@ -15,7 +15,7 @@ class Home extends Component {
         {'home ----' + name}
         {
           newList.map(item => {
-            return (<div key={item.id}>{item.url}</div>)
+            return (<div key={item._id}>{item._id} --- {item.news}</div>)
           })
         }
         <button onClick={() => { alert('1') }}>click</button>
