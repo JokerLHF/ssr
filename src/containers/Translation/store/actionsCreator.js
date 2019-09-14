@@ -9,6 +9,5 @@ export const getTranstionList = () => {
       .then(res => {
         dispatch(setList(res.data));
       })
-      .catch(e => console.log(e));
   }
 }
