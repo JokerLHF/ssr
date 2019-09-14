@@ -1,6 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base.js.js');
+const baseConfig = require('./webpack.base.js');
 const clientConfig = {
   mode: 'development',
   entry: './src/client/index.js',
