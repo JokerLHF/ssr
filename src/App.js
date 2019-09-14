@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import Header from './compoments/Header';
 import { renderRoutes } from "react-router-config";
-export default class App extends Component {
+import { connect } from 'react-redux';
+import { getIsLogin } from '../src/compoments/Header/store/actionsCreator';
+
+
+class App extends Component {
   render () {
     const routeList = this.props.route.routes;
     return (
@@ -12,3 +16,19 @@ export default class App extends Component {
     )
   }
 }
+
+
+App.loadData = (store) => {
+  return store.dispatch(getIsLogin())
+}
+
+const mapStateToProps = state => ({
+
+})
+const mapDispatchToProps = (dispatch) => ({
+  getIsLogin () {
+    dispatch(getIsLogin())
+  }
+})
+//连接store
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,13 +2,16 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Home from './containers/Home';
-import Login from './containers/Login'
+import Login from './containers/Login';
+import Translation from './containers/Translation';
+import NotFound from './NotFound';
 import App from './App';
 
 export default [
   {
     path: '/',
     component: App,
+    loadData: App.loadData,
     routes: [
       {
         path: "/",
@@ -21,22 +24,15 @@ export default [
         component: Login,
         exact: true,
         key: 'login',
+      }, {
+        path: "/transtions",
+        component: Translation,
+        loadData: Translation.loadData,
+        exact: true,
+        key: 'transtions',
+      }, {
+        component: NotFound,
       }
     ]
   }
 ]
-
-
-
-// const mapRoute = () => {
-//   return (
-//     <Switch>
-//       {
-//         routes.map(route => (
-//           <Route {...route} />
-//         ))
-//       }
-//     </Switch>
-//   )
-// }
-// export default mapRoute;

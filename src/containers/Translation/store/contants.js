@@ -1,0 +1,1 @@
+export const SET_TRANS_LIST = 'set-translations-list'
