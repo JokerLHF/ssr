@@ -12,6 +12,23 @@ const serverConfig = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../dist')
   },
+  module: {
+    rules: [{
+      test: /\.css?$/,
+      use: [
+        'isomorphic-style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: true, // 开启模块化
+          }
+        },
+        // 'less-loader',
+        // 'postcss-loader'    // 增加webkit前缀
+      ]
+    }]
+  }
 }
 
 module.exports = merge(baseConfig, serverConfig);

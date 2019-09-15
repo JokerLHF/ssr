@@ -9,5 +9,6 @@ export const getHomeList = () => {
       .then(res => {
         dispatch(changeList(res.data));
       })
+      .catch(e => console.log(e));
   }
 }

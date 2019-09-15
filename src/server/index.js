@@ -29,7 +29,7 @@ app.get('*', function (req, res) {
     }
   });
   Promise.all(promises).then(() => {
-    const context = {};
+    const context = { css: [] };
     const html = render(store, req, routes, context);
     if (context.action == 'REPLACE') {
       res.redirect(301, context.url)
@@ -44,4 +44,4 @@ app.get('*', function (req, res) {
 })
 
 
-const server1 = app.listen(3000);
+const server1 = app.listen(3033);

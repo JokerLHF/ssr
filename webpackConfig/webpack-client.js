@@ -8,5 +8,22 @@ const clientConfig = {
     filename: 'index.js',
     path: path.resolve(__dirname, '../public')
   },
+  module: {
+    rules: [{
+      test: /\.css?$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: true, // 开启模块化
+          }
+        },
+        // 'less-loader',
+        // 'postcss-loader'    // 增加webkit前缀
+      ]
+    }]
+  }
 }
 module.exports = merge(baseConfig, clientConfig);

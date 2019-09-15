@@ -2,12 +2,18 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { layout, layIn } from './store/actionsCreator';
-
+import styles from './index.css';
 class Header extends Component {
+  componentWillMount () {
+    const { staticContext } = this.props;
+    if (staticContext) {
+      staticContext.css.push(styles._getCss());
+    }
+  }
   render () {
     const { headerReducer: { id, login }, layoutFunc, layInFunc } = this.props;
     return (
-      <div>
+      <div className={styles.firstDiv}>
         {
           login ? (
             <Fragment>
