@@ -20,8 +20,21 @@ const clientConfig = {
             modules: true, // 开启模块化
           }
         },
-        // 'less-loader',
-        // 'postcss-loader'    // 增加webkit前缀
+        'postcss-loader'    // 增加webkit前缀
+      ]
+    }, {
+      test: /\.less?$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 2,
+            modules: true, // 开启模块化
+          }
+        },
+        'less-loader',
+        'postcss-loader'
       ]
     }]
   }

@@ -2,14 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { layout, layIn } from './store/actionsCreator';
+import WidthStyles from '../../WidthStyle';
 import styles from './index.css';
 class Header extends Component {
-  componentWillMount () {
-    const { staticContext } = this.props;
-    if (staticContext) {
-      staticContext.css.push(styles._getCss());
-    }
-  }
   render () {
     const { headerReducer: { id, login }, layoutFunc, layInFunc } = this.props;
     return (
@@ -43,7 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 })
 //连接store
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(WidthStyles(Header, styles));
 
 
 

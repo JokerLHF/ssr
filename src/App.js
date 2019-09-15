@@ -3,15 +3,9 @@ import Header from './compoments/Header';
 import { renderRoutes } from "react-router-config";
 import { connect } from 'react-redux';
 import { getIsLogin } from '../src/compoments/Header/store/actionsCreator';
-import styles from './App.css';
-
+import styles from './App.less';
+import WidthStyles from './WidthStyle';
 class App extends Component {
-  componentWillMount () {
-    const { staticContext } = this.props;
-    if (staticContext) {
-      staticContext.css.push(styles._getCss());
-    }
-  }
   render () {
     const { staticContext } = this.props;
     const routeList = this.props.route.routes;
@@ -38,4 +32,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 //连接store
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(WidthStyles(App, styles));
