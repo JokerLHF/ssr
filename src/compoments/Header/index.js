@@ -14,6 +14,7 @@ class Header extends Component {
           login ? (
             <Fragment>
               <Link to="/" className={styles['div-item']}>首页</Link>
+              <Link to="/transtions" className={styles['div-item']}>翻译列表</Link>
               <div onClick={() => { layoutFunc(id) }} className={styles['div-item']}>退出</div>
             </Fragment>
           ) : <div onClick={() => { layInFunc(1) }} className={styles['div-item']}>登录</div>

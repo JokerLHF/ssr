@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
+import { Helmet } from "react-helmet";
 import WidthStyles from '../../WidthStyle';
 import { getHomeList } from './store/actionsCreator';
 
@@ -12,15 +13,22 @@ class Home extends Component {
   render () {
     const { name, newList } = this.props.homeReducer;
     return (
-      <div>
-        {'home ----' + name}
-        {
-          newList.map(item => {
-            return (<div key={item._id}>{item._id} --- {item.news}</div>)
-          })
-        }
-        <button onClick={() => { alert('1') }}>click</button>
-      </div>
+      <Fragment>
+        <Helmet>
+          <title>My Title</title>
+          <meta name="ssr-home" content="这个是joker的ssr的首页" />
+        </Helmet>
+        <div>
+          {'home ----' + name}
+          {
+            newList.map(item => {
+              return (<div key={item._id}>{item._id} --- {item.news}</div>)
+            })
+          }
+          <button onClick={() => { alert('1') }}>click</button>
+        </div>
+      </Fragment>
+
     )
   }
 }
