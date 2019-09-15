@@ -27,6 +27,8 @@ app.get('*', function (req, res) {
       })
       promises.push(promise);
     }
+    console.log(item.route);
+    console.log('------------')
   });
   Promise.all(promises).then(() => {
     const context = { css: [] };

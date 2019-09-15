@@ -4,7 +4,7 @@ export default (DecoratedComponent, styles) => {
   return class NewComponent extends Component {
     componentWillMount () {
       const { staticContext } = this.props;
-      if (staticContext) {
+      if (staticContext && styles) {
         staticContext.css.push(styles._getCss());
       }
     }

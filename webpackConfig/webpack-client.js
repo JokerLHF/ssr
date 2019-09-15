@@ -18,6 +18,7 @@ const clientConfig = {
           options: {
             importLoaders: 1,
             modules: true, // 开启模块化
+            localsConvention: 'camelCase'
           }
         },
         'postcss-loader'    // 增加webkit前缀
@@ -31,6 +32,7 @@ const clientConfig = {
           options: {
             importLoaders: 2,
             modules: true, // 开启模块化
+            localsConvention: 'camelCase'
           }
         },
         'less-loader',

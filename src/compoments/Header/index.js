@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { layout, layIn } from './store/actionsCreator';
+import { layout, layIn, getIsLogin } from './store/actionsCreator';
 import WidthStyles from '../../WidthStyle';
-import styles from './index.css';
+import styles from './index.less';
 class Header extends Component {
+
   render () {
     const { headerReducer: { id, login }, layoutFunc, layInFunc } = this.props;
     return (
@@ -12,19 +13,16 @@ class Header extends Component {
         {
           login ? (
             <Fragment>
-              <Link to="/">首页</Link>
-              <div onClick={() => { layoutFunc(id) }}>退出</div>
+              <Link to="/" className={styles['div-item']}>首页</Link>
+              <div onClick={() => { layoutFunc(id) }} className={styles['div-item']}>退出</div>
             </Fragment>
-          ) : <div onClick={() => { layInFunc(id) }}>登录</div>
+          ) : <div onClick={() => { layInFunc(1) }} className={styles['div-item']}>登录</div>
         }
       </div>
     )
   }
 }
 
-Header.loadData = (store) => {
-  return store.dispatch(getIsLogin())
-}
 
 const mapStateToProps = (state) => ({
   headerReducer: state.header
@@ -37,8 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(layIn(id))
   },
 })
-//连接store
-export default connect(mapStateToProps, mapDispatchToProps)(WidthStyles(Header, styles));
 
 
-
+const ExportHeader = connect(mapStateToProps, mapDispatchToProps)(WidthStyles(Header, styles));
+export default ExportHeader;

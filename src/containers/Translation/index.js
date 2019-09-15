@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import WidthStyles from '../../WidthStyle';
 import { getTranstionList } from './store/actionsCreator';
 
 class Translation extends Component {
@@ -34,9 +35,6 @@ class Translation extends Component {
   }
 }
 
-Translation.loadData = (store) => {
-  return store.dispatch(getTranstionList());
-}
 
 const mapStateToProps = state => ({
   headerReducer: state.header,
@@ -47,6 +45,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getTranstionList());
   }
 })
-//连接store
-export default connect(mapStateToProps, mapDispatchToProps)(Translation);
+
+
+const ExportTranslation = connect(mapStateToProps, mapDispatchToProps)(WidthStyles(Translation));
+ExportTranslation.loadData = (store) => {
+  return store.dispatch(getTranstionList());
+}
+export default ExportTranslation;
+
+
 

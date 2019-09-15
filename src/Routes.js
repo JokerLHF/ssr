@@ -1,23 +1,23 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Home from './containers/Home';
+import ExportHome from './containers/Home';
 import Login from './containers/Login';
-import Translation from './containers/Translation';
+import ExportTranslation from './containers/Translation';
 import NotFound from './NotFound';
-import App from './App';
+import ExportApp from './App';
 
 export default [
   {
     path: '/',
-    component: App,
-    loadData: App.loadData,
+    component: ExportApp,
+    loadData: ExportApp.loadData,
     routes: [
       {
         path: "/",
-        component: Home,
+        component: ExportHome,
         exact: true,
-        loadData: Home.loadData,
+        loadData: ExportHome.loadData,
         key: 'home',
       }, {
         path: "/login",
@@ -26,8 +26,8 @@ export default [
         key: 'login',
       }, {
         path: "/transtions",
-        component: Translation,
-        loadData: Translation.loadData,
+        component: ExportTranslation,
+        loadData: ExportTranslation.loadData,
         exact: true,
         key: 'transtions',
       }, {

@@ -22,6 +22,7 @@ const serverConfig = {
           options: {
             importLoaders: 1,
             modules: true, // 开启模块化
+            localsConvention: 'camelCase'
           }
         },
         'postcss-loader'
@@ -35,6 +36,7 @@ const serverConfig = {
           options: {
             importLoaders: 2,
             modules: true, // 开启模块化
+            localsConvention: 'camelCase'
           }
         },
         'less-loader',

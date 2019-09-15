@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import WidthStyles from '../../WidthStyle';
 import { getHomeList } from './store/actionsCreator';
 
 class Home extends Component {
@@ -24,10 +25,6 @@ class Home extends Component {
   }
 }
 
-Home.loadData = (store) => {
-  return store.dispatch(getHomeList())
-}
-
 const mapStateToProps = state => ({
   homeReducer: state.home,
 })
@@ -36,6 +33,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getHomeList())
   }
 })
-//连接store
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+const ExportHome = connect(mapStateToProps, mapDispatchToProps)(WidthStyles(Home));
+ExportHome.loadData = (store) => {
+  return store.dispatch(getHomeList())
+}
+export default ExportHome;
 

@@ -6,6 +6,7 @@ import { getIsLogin } from '../src/compoments/Header/store/actionsCreator';
 import styles from './App.less';
 import WidthStyles from './WidthStyle';
 class App extends Component {
+
   render () {
     const { staticContext } = this.props;
     const routeList = this.props.route.routes;
@@ -19,17 +20,19 @@ class App extends Component {
 }
 
 
-App.loadData = (store) => {
-  return store.dispatch(getIsLogin())
-}
+
 
 const mapStateToProps = state => ({
 
 })
 const mapDispatchToProps = (dispatch) => ({
-  getIsLogin () {
-    dispatch(getIsLogin())
+  getLogin (id) {
+    dispatch(getIsLogin(id))
   }
 })
 //连接store
-export default connect(mapStateToProps, mapDispatchToProps)(WidthStyles(App, styles));
+const ExportApp = connect(mapStateToProps, mapDispatchToProps)(WidthStyles(App, styles));
+ExportApp.loadData = (store) => {
+  return store.dispatch(getIsLogin(1))
+}
+export default ExportApp;
